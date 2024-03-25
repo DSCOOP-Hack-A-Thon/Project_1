@@ -1,14 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+const xmlParser = require('xmlparser');
 const app = express();
-app.use(bodyParser.json()); // support json encoded bodies
+
+app.use(xmlParser);
 
 // route to receive post request and save data
 app.post('/', (req, res) => {
 const data = req.body;
   console.log(data); // log received data to the console
-  res.send('Data received!');
+  console.log(req);
+  res.send(data);
 });
 
 const port = process.env.PORT || 3000;
