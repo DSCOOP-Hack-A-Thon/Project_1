@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JDF xmlns="http://www.CIP4.org/JDFSchema_1_1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.CIP4.org/JDFSchema_1_1 http://www.cip4.org/Schema/JDFSchema_1_4/JDF.xsd" Activation="Active" ID="JDF003" JobID="EPM" JobPartID="IDP" Status="Ready" Type="Combined" Types="ColorSpaceConversion DigitalPrinting" Version="1.4">
+	<ResourcePool>
+		<!-- Uncheck "For personalized jobs, use separations specified in the job -->
+		<GeneralID IDValue="false" IDUsage="hpUseEmbededSeparationSettingsforVDPJob" />
+		<ColorantControl Status="Available" ID="CC001" Class="Parameter" ProcessColorModel="DeviceCMY">
+            <ColorPoolRef rRef="CP001" />
+		</ColorantControl>
+		<!-- set Pantone emulation to "HP Professional Pantone emulation", 
+			set the Pantone emulation profile to "HPIndigoExp05_CMY.icc" -->
+		<ColorPool Class="Parameter" ID="CP001" Status="Available">
+			<Color Name="PANTONE.*" MappingSelection="UseLocalPrinterValues">
+                <FileSpec ResourceUsage="TargetProfile" URL="urn:HPIndigoExp05_CMY.icc" />
+			</Color>
+		</ColorPool>
+		<ColorSpaceConversionParams Class="Parameter" ICCProfileUsage="UseSupplied" ID="CSCP001" Status="Available">
+			<!-- Set Press output profile to HPIndigoExp05_CMY.icc -->
+			<FileSpec MimeType="ICC Profile" ResourceUsage="FinalTargetDevice" URL="urn:HPIndigoExp05_CMY.icc" />
+			<!-- Set CMYK input profile to "HPIndigoEPM_DeviceLink_v2.icc" -->
+			<ColorSpaceConversionOp Operation="Convert" SourceCS="CMYK">
+				<FileSpec MimeType="ICC Profile" ResourceUsage="SourceProfile" URL="urn:HPIndigoEPM_DeviceLink_v2.icc" />
+			</ColorSpaceConversionOp>
+			<!-- Set the RGB input Profile to "sRGBColorSpace.icm" -->
+			<ColorSpaceConversionOp Operation="Convert" SourceCS="RGB">
+				<FileSpec MimeType="ICC Profile" ResourceUsage="SourceProfile" URL="urn:sRGBColorSpace.icm" />
+			</ColorSpaceConversionOp>
+			<!-- Set the Gray input profile to "GrayScale.icc" -->
+			<ColorSpaceConversionOp Operation="Convert" SourceCS="Gray">
+				<FileSpec MimeType="ICC Profile" ResourceUsage="SourceProfile" URL="urn:GrayScale.icc" />
+			</ColorSpaceConversionOp>
+			<!--  uncheck "Use black ink only for pure blacks -->
+			<GeneralID IDValue="false" IDUsage="hpUseBlackOnlyForPureBlacks" />
+			<!-- Uncheck "Preserve black only CMYK inputs" -->
+			<ColorSpaceConversionOp SourceCS="CMYK" PreserveBlack="false" />
+		</ColorSpaceConversionParams>
+		<RunList Class="Parameter" ID="RL001" Status="Available">
+			<LayoutElement>
+				<FileSpec MimeType="application/pdf" URL="file://localhost/prodflow/tests/assets/static/simple8.pdf" />
+			</LayoutElement>
+		</RunList>
+		<DigitalPrintingParams Class="Parameter" ID="DPP001" Status="Available" />
+		<Media Class="Consumable" ID="M001" Status="Available" />
+		<Component Class="Quantity" ComponentType="FinalProduct" ID="C001" Status="Unavailable" />
+	</ResourcePool>
+	<ResourceLinkPool>
+		<ColorantControlLink Usage="Input" rRef="CC001" />
+		<ColorSpaceConversionParamsLink rRef="CSCP001" Usage="Input" />
+		<RunListLink rRef="RL001" Usage="Input" />
+		<DigitalPrintingParamsLink rRef="DPP001" Usage="Input" />
+		<MediaLink rRef="M001" Usage="Input" />
+		<ComponentLink rRef="C001" Usage="Output" />
+	</ResourceLinkPool>
+</JDF>

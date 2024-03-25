@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<JDF Type="Combined" xmlns="http://www.CIP4.org/JDFSchema_1_1" ID="rootNodeId" Status="Waiting" Types="DigitalPrinting" Version="1.4" DescriptiveName="SimpleTicket">
+  <!-- This is the simplest JDF ticket that can be accepted by the HP Indigo DFE -->
+  <ResourcePool>
+	<!-- DigitalPrintingParams and Media Resources are required by the CIP4 IntegratedDigitalPrinting ICS, and provides no data in this ticket -->
+	<DigitalPrintingParams ID="DPP01" Status="Available" Class="Parameter"/>
+	<Media ID="M001" Status="Available" Class="Consumable"/>
+    <RunList ID="RunList_1" Status="Available" Class="Parameter">
+      <LayoutElement>
+        <FileSpec URL="http://localhost/prodflow/tests/assets/static/simple8.pdf" MimeType="application/pdf"/>
+      </LayoutElement>
+    </RunList>
+    <Component ID="Component" Status="Unavailable" Class="Quantity"/>
+  </ResourcePool>
+  <ResourceLinkPool>
+    <DigitalPrintingParamsLink rRef="DPP01" Usage="Input"/>
+	<MediaLink rRef="M001" Usage="Input"/>
+	<RunListLink rRef="RunList_1" Usage="Input"/>
+    <ComponentLink rRef="Component" Usage="Output"/>
+  </ResourceLinkPool>
+</JDF>
