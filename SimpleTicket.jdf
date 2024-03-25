@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<JDF Type="Combined" xmlns="http://www.CIP4.org/JDFSchema_1_1" ID="rootNodeId" Status="Waiting" Types="DigitalPrinting" Version="1.4" DescriptiveName="SimpleTicket">
+<JDF Type="Combined" xmlns="http://www.CIP4.org/JDFSchema_1_1" ID="rootNodeId" Status="Waiting" Types="DigitalPrinting" Version="1.4" DescriptiveName="SimpleTicket_adjusted">
   <!-- This is the simplest JDF ticket that can be accepted by the HP Indigo DFE -->
   <ResourcePool>
 	<!-- DigitalPrintingParams and Media Resources are required by the CIP4 IntegratedDigitalPrinting ICS, and provides no data in this ticket -->
