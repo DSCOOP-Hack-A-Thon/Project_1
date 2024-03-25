@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JMF
+	xmlns="http://www.CIP4.org/JDFSchema_1_1" SenderID="MIS System" TimeStamp="2006-04-19T17:41:52-07:00" Version="1.2">
+	<Command ID="misb4beee807642689c" Type="SubmitQueueEntry">
+		<QueueSubmissionParams URL="https://raw.githubusercontent.com/DSCOOP-Hack-A-Thon/Project_1/main/EPM.jdf"
+                               />
+	</Command>
+</JMF>
