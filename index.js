@@ -1,9 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const xmlParser = require('xmlparser');
+const xmlparser = require('express-xml-bodyparser');
 const app = express();
 
-app.use(xmlParser);
+app.use(xmlparser());
 
 // route to receive post request and save data
 app.post('/', (req, res) => {
